@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <title>Software Developer and Analyst</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog Template">
+    <meta name="author" content="CJ Llorente">    
+    <link rel="shortcut icon" href="favicon.ico"> 
+    
+    <!-- FontAwesome JS-->
+    <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+    
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/theme-8.css">
+
+</head> 
+
+<body>
+    
+    <header class="header text-center">	    
+	    <h1 class="blog-name pt-lg-4 mb-0"><a href="index.html">CJ Llorente</a></h1>
+        
+	    <nav class="navbar navbar-expand-lg navbar-dark" >
+           
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div id="navigation" class="collapse navbar-collapse flex-column" >
+				<div class="profile-section pt-3 pt-lg-0">
+				    <img class="profile-image mb-3 rounded-circle mx-auto" src="assets/images/profile.jpg" alt="image" >			
+					
+					<div class="bio mb-3">Software developer, data analyst, and scientist. <br><a href="about.html">Find out more about me</a></div><!--//bio-->
+					<ul class="social-list list-inline py-3 mx-auto">
+			            <!-- <li class="list-inline-item"><a href="#"><i class="fab fa-twitter fa-fw"></i></a></li> -->
+			            <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+			            <li class="list-inline-item"><a href="#"><i class="fab fa-github-alt fa-fw"></i></a></li>
+			            <!-- <li class="list-inline-item"><a href="#"><i class="fab fa-stack-overflow fa-fw"></i></a></li>
+			            <li class="list-inline-item"><a href="#"><i class="fab fa-codepen fa-fw"></i></a></li> -->
+			        </ul><!--//social-list-->
+			        <hr> 
+				</div><!--//profile-section-->
+				
+				<ul class="navbar-nav flex-column text-left">
+					<li class="nav-item">
+					    <a class="nav-link" href="index.html"><i class="fas fa-home fa-fw mr-2"></i>Home </a>
+					</li>
+					<li class="nav-item active">
+					    <a class="nav-link" href="projects.html"><i class="fas fa-bookmark fa-fw mr-2"></i>My Projects </a>
+					</li>
+                    <li class="nav-item">
+					    <a class="nav-link" href="cats.html"><i class="fas fa-cat fa-fw mr-2"></i>My Cats</a>
+					</li>
+					<li class="nav-item">
+					    <a class="nav-link" href="education.html"><i class="fas fa-graduation-cap fa-fw mr-2"></i>Education</a>
+					</li>
+                    <li class="nav-item">
+					    <a class="nav-link" href="experience.html"><i class="fas fa-mug-hot fa-fw mr-2"></i>Experience</a>
+					</li>
+                    <li class="nav-item">
+					    <a class="nav-link" href="skills.html"><i class="fas fa-laptop-code fa-fw mr-2"></i>Skills</a>
+					</li>
+                    
+				</ul>
+				
+				<div class="my-2 my-md-3">
+				    <a class="btn btn-primary" href="#" target="_blank">Get in Touch</a>
+				</div>
+			</div>
+		</nav>
+    </header>
+    
+    <div class="main-wrapper">
+	    <section class="cta-section theme-bg-light py-5">
+		    
+        <div style="width: 75%;margin: 0 auto;text-align: justify;">
+	    
+        <h1>Ndustria</h1>
+
+        <p>
+            Ndustria is a library designed for ease, speed, error-resistance, and reproducibility when running analysis codes in Python.     
+            It achieves this through its 4 core features:
+            <ul style="text-align: left;">
+                <li>Unobtrusive design</li>
+                <li>Data caching and reuse</li>
+                <li>Automatic association of code and parameters with data</li>
+                <li>Parallel execution</li>
+                
+            </ul>
+        </p>
+
+        <h1>Unobtrusive design</h1>
+
+        Ndustria was built with graduate students and postdocs in mind. Busy people with busy schedules who are loath to waste their 
+        time. Ndustria respects your time and is designed to require as few code changes as possible. 
+        The following is a typical example of how code might be edited to run with Ndustria.<br/><br/><br/>
+        <table>
+            <tr style="text-align: center;">
+                <th> Without Ndustria</th>
+                <th> </th>
+                <th> With Ndustria</th>
+            </tr>
+            <tr>
+                <td>
+                    <pre style="color:#ccc;background-color: #333;"><code>
+
+        import numpy as np
+
+        # mock function for creating some data to work with
+        def read_in_data():
+            arr = np.random.rand(100000)
+            return arr
+        
+        
+        my_data = read_in_data()
+        sum = np.sum(my_data)
+        mean = np.mean(my_data)
+        std = np.std(my_data)
+        
+        print(f"""
+        Viewing data for {np.shape(my_data)[0]} random numbers: 
+                Sum     : {sum}
+                Mean    : {mean}
+                Std dev : {std}
+        """)
+            
+            
+                    </code></pre>
+                </td>
+                <td> &DoubleRightArrow; </td>
+                <td>
+                    <pre style="color:#ccc;background-color: #333;"><code>
+
+        import numpy as np
+        <span style="color: lime;">from ndustria import Pipeline</span>
+
+        <span style="color: lime;">pipe = Pipeline() 
+        #pipe = Pipeline(parallel=True) if running in parallel mode</span>
+
+        <span style="color: lime;">
+        # add function decorators for each function you want added to the pipeline
+        @pipe.AddFunction()</span>
+        def read_in_data():
+            arr = np.random.rand(100000)
+            return arr
+
+        <span style="color: lime;">
+        # create wrapper functions for each analysis and add 
+        # decorators to them as well
+        @pipe.AddFunction()
+        def do_sum(data):
+            return np.sum(data)
+        
+        @pipe.AddFunction()
+        def do_mean(data):
+            return np.mean(data)
+        
+        @pipe.AddFunction()
+        def do_std(data):
+            return np.std(data)
+        </span>
+        
+        
+        <span style="color: lime;"># calling these functions sets up, but does not run the pipeline</span>
+        my_data = <span style="color: lime;">pipe.</span>read_in_data()
+        sum = <span style="color: lime;">pipe.do_sum</span>(my_data)
+        mean = <span style="color: lime;">pipe.do_mean</span>(my_data)
+        std = <span style="color: lime;">pipe.do_std</span>(my_data)
+
+        <span style="color: lime;"># call pipe.run() to finally run everything</span>
+        <span style="color: lime;">pipe.run()</span>
+        
+        print(f"""
+        Viewing data for {np.shape(my_data)[0]} random numbers: 
+                Sum     : {sum}
+                Mean    : {mean}
+                Std dev : {std}
+        """)
+            
+            
+                    </code></pre>
+                </td>
+            </tr>
+        </table>
+
+        Total code changes = 1 import statement + 1 object declaration + 1 call to pipe.run() + 1 wrapper function and decorator per analysis and data base query.
+        We have 3 analyses and 1 query for a total of 7 code changes, none of which require significant effort or time investment to produce. 
+        <br/><br/><br/>
+
+        <h1>Caching and Reuse</h1>
+
+        When developing a large analysis pipeline, the last thing you want is to wait on an 8 hour runtime just to find out that an error 
+        occurred halfway through and that you have to debug your code and start over. This scenario can get even worse if your graphs 
+        have to wait on the full analysis pipeline to be recreated. Imagine making a typo on a graph and then having to wait a day or
+        two just to make that one minor edit! Ndustria remedies both situations by caching/snapshotting/saving work done by each of its
+        pipeline functions. Anything you <code>return</code> from a function marked with <code>@pipe.AddFunction()</code> is automatically
+        saved to disk and recalled when necessary. This is the reason for creating wrapper functions around analysis and database access. 
+        Consider the example from before.
+        <br/><br/><br/>
+
+        <pre style="color:#ccc;background-color: #333;"><code>
+
+            import numpy as np
+            from ndustria import Pipeline
+    
+            ###################################################
+            # Pipeline creation and function assignment
+            ###################################################
+            pipe = Pipeline()                    
+    
+            @pipe.AddFunction()
+            def read_in_data():
+                arr = np.random.rand(100000)
+                <span style="color: skyblue;">return arr # returning the array also saves it to disk</span>
+    
+            @pipe.AddFunction()
+            def do_sum(data):
+            <span style="color: skyblue;">  return np.sum(data) # this value will also be saved to disk</span>
+            
+            @pipe.AddFunction()
+            def do_mean(data):
+            <span style="color: skyblue;">  return np.mean(data) # this value will also be saved to disk</span>
+            
+            @pipe.AddFunction()
+            def do_std(data):
+            <span style="color: skyblue;">  return np.std(dataa) # there's a typo in this line, so it will cause an error</span>
+
+            ###################################################
+            # Pipeline setup (which functions to run)
+            ###################################################
+            my_data = pipe.read_in_data()
+            sum = pipe.do_sum(my_data)
+            mean = pipe.do_mean(my_data)
+            std = pipe.do_std(my_data) <span style="color: skyblue;"> # the error will not happen here</span>
+    
+            ###################################################
+            # Pipeline run
+            ###################################################
+            pipe.run() <span style="color: skyblue;"> # it happens here instead</span>
+            
+            print(f"""
+            Viewing data for {np.shape(my_data)[0]} random numbers: 
+                    Sum     : {sum}
+                    Mean    : {mean}
+                    Std dev : {std}
+            """)
+                
+                
+                        </code></pre>
+        
+            When this code runs, it will cause an error due to the typo in the last function. While this particular code doesn't take very long, its easy to see how 
+            frustrating it can be to have an error at the end of your pipeline dissolve all the work done to get to that point. Luckily, this code was written with
+            ndustria, so all the work done before the error was saved to disk and can be recalled when running the pipeline again!
+            This is what that looks like
+
+            <pre style="color:#ccc;background-color: #333;"><code>
+
+                import numpy as np
+                from ndustria import Pipeline
+        
+                ###################################################
+                # Pipeline creation and function assignment
+                ###################################################
+                pipe = Pipeline()                    
+        
+                @pipe.AddFunction()
+                def read_in_data():
+                    arr = np.random.rand(100000)
+                    return arr 
+        
+                @pipe.AddFunction()
+                def do_sum(data):
+                    return np.sum(data)
+                
+                @pipe.AddFunction()
+                def do_mean(data):
+                    return np.mean(data)
+                
+                @pipe.AddFunction()
+                def do_std(data):
+                  return np.std(data) <span style="color: skyblue;"># the typo has been fixed</span>
+    
+                ###################################################
+                # Pipeline setup (which functions to run)
+                ###################################################
+                <span style="color: skyblue;"># this function has a result on disk, Ndustria will reload that result instead of running this again</span>
+                my_data = pipe.read_in_data() 
+
+                <span style="color: skyblue;"># this function has a result on disk, Ndustria will reload that result instead of running this again</span>
+                sum = pipe.do_sum(my_data)
+
+                <span style="color: skyblue;"># this function has a result on disk, Ndustria will reload that result instead of running this again</span>
+                mean = pipe.do_mean(my_data)
+
+                <span style="color: skyblue;"># this function does not have a result on disk, Ndustria will try to run this</span>
+                <span style="color: skyblue;"># hope it succeeds this time ;)</span>
+                std = pipe.do_std(my_data) 
+        
+                ###################################################
+                # Pipeline run
+                ###################################################
+                pipe.run()
+                
+                print(f"""
+                Viewing data for {np.shape(my_data)[0]} random numbers: 
+                        Sum     : {sum}
+                        Mean    : {mean}
+                        Std dev : {std}
+                """)
+                    
+                    
+                            </code></pre>
+
+            The benefit of caching analysis results this way truly cannot be overstated. Saving the results of previous runs allows for much faster 
+            and more effective pipeline development as the turnaround between running code and seeing results shrinks to near nothing. It allows the 
+            pipeline to survive catastrophic errors with most of its work intact. Finally, it allows previous analysis results to be used in new pipelines
+            since the Ndustria cache is pipeline agnostic (i.e. it does not matter which pipeline originally created the result, as long as the function's 
+            name, source code, and arguments are the same, Ndustria will associate it with the same data on disk. More on this in the next section.) 
+
+            <br/><br/><br/>
+
+        <h1>Association of Code and Arguments with Data</h1>
+
+        So how exactly does ndustria know which data belongs to which function? And what happens if that function's source code changes? Or it's passed 
+        a different argument that changes the result completely? The answer is hashing! A hash function takes in arbitrary data and returns a hash, which is 
+        a long string of characters that looks something like this: <code>8743b52063cd84097a65d1633f5c74f5</code>. Ndustria takes the function's name, 
+        its source code, and all arguments its given and converts them into a single hash. After that function runs, it saves its result to a file using
+        that hash as the filename. If the same function is run with the same arguments, then the same hash will be produced and Ndustria will be able to 
+        find the right file in the cache.  
+        <br/><br/><br/>
+
+        <h1>Parallel Execution</h1>
+
+        <b>Note: </b> Ndustria uses mpi4py as its parallelism library, so you'll need a working install of MPI and mpi4py to use this feature. 
+
+        How does parallelism in Ndustria work? When you pass data created by one pipeline function into another, Ndustria understands that the latter
+        function <i>depends</i> on the former. Internally, Ndustria creates a <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">Directed Acyclic Graph</a>
+        to keep track of which functions depend on which other functions. When running in parallel mode, any functions that are independent or whose dependencies
+        have finished running may be run in parallel with any other similarly credentialed function. 
+                            
+        
+
+    </div>
+
+				
+		    
+	    </section>
+	    
+	    <footer class="footer text-center py-2 theme-bg-dark">
+		   
+	        <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can buy the commercial license via our website: themes.3rdwavemedia.com */-->
+                <small class="copyright">Designed with <i class="fas fa-heart" style="color: #fb866a;"></i> by <a href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
+		   
+	    </footer>
+    
+    </div><!--//main-wrapper-->
+
+    
+       
+    <!-- Javascript -->          
+    <script src="assets/plugins/jquery-3.3.1.min.js"></script>
+    <script src="assets/plugins/popper.min.js"></script> 
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+    
+
+</body>
+</html> 
+

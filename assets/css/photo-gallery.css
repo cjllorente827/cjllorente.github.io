@@ -1,0 +1,44 @@
+.photo-gallery {
+    display: grid;
+    background-color: white;
+    width: 100%;
+    /* height: 100%; */
+    aspect-ratio: 1;
+    grid-template-columns: repeat(8, 1fr) ;
+    /* grid-template-rows: repeat(10, 1fr) ; */
+    grid-column-gap: 1px;
+    grid-row-gap: 1px;
+    border: 1px solid white;
+    margin: 0 auto;
+}
+
+.photo-gallery-cell {
+    width: 100%;
+    /* height: 100%; */
+    aspect-ratio: 1;
+    color: rgb(255, 255, 255);
+    background-color: rgb(81, 81, 81);
+    background-size: cover;
+}
+
+.modal{
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    background-color: black;
+    opacity: 0.75;
+    z-index: 1;
+}
+
+.image_container{
+    display: block;
+    position: fixed;
+    margin: 0 auto;
+    width: fit-content;
+    height: fit-content;
+    background-color: blue;
+    z-index: 2;
+}
